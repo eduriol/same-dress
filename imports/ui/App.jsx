@@ -1,22 +1,16 @@
 import React, { Component } from 'react';
+import { Col } from 'react-bootstrap';
+
+import AddDressForm from './AddDressForm.jsx'
 
 export default class App extends Component {
-  sayHello() {
-      return (
-        <p>Hello World!</p>    
-      );
-  }
-  
   render() {
     return (
       <div className="container">
         <header>
-          <h1>Same Dress</h1>
+          <h1>Is my dress going to be worn by someone else?</h1>
         </header>
- 
-        <ul>
-          {this.sayHello()}
-        </ul>
+        <AddDressForm/>
       </div>
     );
   }

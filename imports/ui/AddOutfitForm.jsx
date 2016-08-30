@@ -18,8 +18,8 @@ export default class AddOutfitForm extends Component {
                 </Col>
                 <Col xs={4}>
                     <FormControl componentClass="select" placeholder="select">
-                        <option value="shot">Short</option>
-                        <option value="long">Long</option>
+                        <option value="short">Short dress</option>
+                        <option value="long">Long dress</option>
                         <option value="jumpsuit">Jumpsuit</option>
                         <option value="other">Other</option>
                     </FormControl>

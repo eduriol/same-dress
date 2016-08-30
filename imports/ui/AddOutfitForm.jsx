@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
-
 import { Form, FormGroup, Col, ControlLabel, FormControl, Button } from 'react-bootstrap';
 
-export default class AddDressForm extends Component {
+import EventDatePicker from './EventDatePicker.jsx';
+
+export default class AddOutfitForm extends Component {
+    
+    handleSubmit(event) {
+        event.preventDefault();
+    }
+    
     render() {
         return (
-          <Form horizontal>
-            <FormGroup controlId="formDressType">
+          <Form horizontal onSubmit={ this.handleSubmit.bind(this) }>
+            <FormGroup>
                 <Col componentClass={ControlLabel} xs={4}>
                     Type
                 </Col>
@@ -57,9 +63,17 @@ export default class AddDressForm extends Component {
                     <FormControl type="text"/>
                 </Col>
             </FormGroup>
-            <Col xs={8}>
-                <Button bsStyle="primary" type="submit" className="pull-right">Send</Button>
-            </Col>
+            <FormGroup>
+                <Col componentClass={ControlLabel} xs={4}>
+                    Date
+                </Col>
+                <Col xs={2}>
+                    <EventDatePicker />
+                </Col>
+                <Col xs={2}>
+                    <Button bsStyle="primary" type="submit" className="pull-right">Send</Button>
+                </Col>
+            </FormGroup>
           </Form>
         );
     }

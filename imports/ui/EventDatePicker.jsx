@@ -15,7 +15,7 @@ export default class EventDatePicker extends Component {
     }
     
     render() {
-        var DatePicker = require('react-datepicker');
+        const DatePicker = require('react-datepicker');
         require('react-datepicker/dist/react-datepicker.css');
         return (
             <DatePicker className='form-control' selected={ this.state.date } onChange={ this.handleChange.bind(this) }/>

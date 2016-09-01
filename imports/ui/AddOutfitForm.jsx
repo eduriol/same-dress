@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Form, FormGroup, Col, ControlLabel, FormControl, Button } from 'react-bootstrap';
 
-import EventDatePicker from './EventDatePicker.jsx';
+import EventDatePicker from './EventDatePicker';
 
 export default class AddOutfitForm extends Component {
     

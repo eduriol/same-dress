@@ -7,23 +7,22 @@ export default class OutfitsList extends Component {
     
     getOutfits() {
         return [
-            { _id: 1, type: 'short', brand: 'Loewe', color: 'blue', event: 'wedding', city: 'Madrid', date: '2012-04-23' },
-            { _id: 2, type: 'short', brand: 'Zara', color: 'pink', event: 'christening', city: 'Valladolid', date: '2014-04-23' },
-            { _id: 3, type: 'long', brand: 'Gucci', color: 'red', event: 'wedding', city: 'London', date: '2015-04-23' },
+            { type: 'short', brand: 'Loewe', color: 'blue', event: 'wedding', city: 'Madrid', date: '2012-04-23' },
+            { type: 'short', brand: 'Zara', color: 'pink', event: 'christening', city: 'Valladolid', date: '2014-04-23' },
+            { type: 'long', brand: 'Gucci', color: 'red', event: 'wedding', city: 'London', date: '2015-04-23' },
         ];
     }
     
     renderOutfitsHeader() {
+        let outfitProperties = [];
+        for (var propertyName in this.getOutfits()[0]) {
+            outfitProperties.push(<th>{ propertyName }</th>);
+        }
         return (
             <thead>
               <tr>
                 <th>&nbsp;</th>
-                <th>Type</th>
-                <th>Brand</th>
-                <th>Color</th>
-                <th>Event</th>
-                <th>City</th>
-                <th>Date</th>
+                { outfitProperties }
               </tr>
             </thead>  
         );

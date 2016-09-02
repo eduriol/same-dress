@@ -3,15 +3,17 @@ import React, { Component, PropTypes } from 'react';
 export default class Outfit extends Component {
 
     render() {
+        let outfitRows = [];
+        for (var propertyName in this.props.outfit) {
+            if (this.props.outfit.hasOwnProperty(propertyName)) {
+                outfitRows.push(<td>{ this.props.outfit[propertyName] }</td>);
+            }
+        }
+
         return (
             <tr>
                 <td><img src="images/circle_green.png" height="20" width="20"/></td>                
-                <td>{ this.props.outfit.type }</td>
-                <td>{ this.props.outfit.brand }</td>
-                <td>{ this.props.outfit.color }</td>
-                <td>{ this.props.outfit.event }</td>
-                <td>{ this.props.outfit.city}</td>
-                <td>{ this.props.outfit.date }</td>
+                { outfitRows }
             </tr>
         );
     }

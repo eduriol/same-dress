@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Table } from 'react-bootstrap';
 
 import Outfit from './Outfit';
 
@@ -12,18 +13,46 @@ export default class OutfitsList extends Component {
         ];
     }
     
-    renderOutfits() {
+    renderOutfitsHeader() {
+        return (
+            <thead>
+              <tr>
+                <th>&nbsp;</th>
+                <th>Type</th>
+                <th>Brand</th>
+                <th>Color</th>
+                <th>Event</th>
+                <th>City</th>
+                <th>Date</th>
+              </tr>
+            </thead>  
+        );
+    }
+    
+    renderOutfitRows() {
         return this.getOutfits().map(
             (outfit) => (
                 <Outfit key={ outfit._id } outfit={ outfit } />
             )
         );
     }
+    
+    renderOutfitsTable() {
+        const outfitsTable = (
+          <Table responsive>
+            { this.renderOutfitsHeader() }
+            <tbody>
+              { this.renderOutfitRows() }
+            </tbody>
+          </Table>
+        );
+        return outfitsTable;
+    }
 
     render() {
         return (
             <ul>
-                { this.renderOutfits() }
+                { this.renderOutfitsTable() }
             </ul>
         );
     }

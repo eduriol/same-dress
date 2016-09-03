@@ -1,22 +1,19 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Table } from 'react-bootstrap';
+import { createContainer } from 'meteor/react-meteor-data';
+
+import { Outfits } from '../api/outfits.js';
 
 import Outfit from './Outfit';
 
-export default class OutfitsList extends Component {
-    
-    getOutfits() {
-        return [
-            { type: 'short', brand: 'Loewe', color: 'blue', event: 'wedding', city: 'Madrid', date: '2012-04-23' },
-            { type: 'short', brand: 'Zara', color: 'pink', event: 'christening', city: 'Valladolid', date: '2014-04-23' },
-            { type: 'long', brand: 'Gucci', color: 'red', event: 'wedding', city: 'London', date: '2015-04-23' },
-        ];
-    }
+class OutfitsList extends Component {
     
     renderOutfitsHeader() {
         let outfitProperties = [];
-        for (var propertyName in this.getOutfits()[0]) {
-            outfitProperties.push(<th>{ propertyName }</th>);
+        for (var propertyName in this.props.outfits[0]) {
+            if (propertyName !== '_id') {
+                outfitProperties.push(<th>{ propertyName }</th>);
+            }
         }
         return (
             <thead>
@@ -29,7 +26,7 @@ export default class OutfitsList extends Component {
     }
     
     renderOutfitRows() {
-        return this.getOutfits().map(
+        return this.props.outfits.map(
             (outfit) => (
                 <Outfit key={ outfit._id } outfit={ outfit } />
             )
@@ -56,3 +53,15 @@ export default class OutfitsList extends Component {
         );
     }
 }
+
+OutfitsList.propTypes = {
+    outfits: PropTypes.array.isRequired,
+};
+
+export default createContainer(
+    () => {
+        return {
+            outfits: Outfits.find({}).fetch(),
+        };
+    }, OutfitsList 
+);

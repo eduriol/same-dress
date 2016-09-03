@@ -1,12 +1,29 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import { Form, FormGroup, Col, ControlLabel, FormControl, Button } from 'react-bootstrap';
 
 import EventDatePicker from './EventDatePicker';
 
+import { Outfits } from '../api/outfits.js';
+
 export default class AddOutfitForm extends Component {
     
-    handleSubmit(event) {
-        event.preventDefault();
+    handleSubmit(e) {
+        e.preventDefault();
+        const type = ReactDOM.findDOMNode(this.refs.typeInput).value.trim();
+        const brand = ReactDOM.findDOMNode(this.refs.brandInput).value.trim();
+        const color = ReactDOM.findDOMNode(this.refs.colorInput).value.trim();
+        const event = ReactDOM.findDOMNode(this.refs.eventInput).value.trim();
+        
+        Outfits.insert({
+            type, brand, color, event,
+        });
+        
+        ReactDOM.findDOMNode(this.refs.typeInput).value = 'short';
+        ReactDOM.findDOMNode(this.refs.brandInput).value = '';
+        ReactDOM.findDOMNode(this.refs.colorInput).value = '';
+        ReactDOM.findDOMNode(this.refs.eventInput).value = 'wedding';
+
     }
     
     render() {
@@ -17,7 +34,7 @@ export default class AddOutfitForm extends Component {
                     Type
                 </Col>
                 <Col xs={4}>
-                    <FormControl componentClass="select" placeholder="select">
+                    <FormControl componentClass="select" ref="typeInput">
                         <option value="short">Short dress</option>
                         <option value="long">Long dress</option>
                         <option value="jumpsuit">Jumpsuit</option>
@@ -27,10 +44,10 @@ export default class AddOutfitForm extends Component {
             </FormGroup>
             <FormGroup>
                 <Col componentClass={ControlLabel} xs={4}>
-                    Brand/Designer
+                    Brand
                 </Col>
                 <Col xs={4}>
-                    <FormControl type="text"/>
+                    <FormControl type="text" ref="brandInput"/>
                 </Col>
             </FormGroup>
             <FormGroup>
@@ -38,7 +55,7 @@ export default class AddOutfitForm extends Component {
                     Color
                 </Col>
                 <Col xs={4}>
-                    <FormControl type="text"/>
+                    <FormControl type="text" ref="colorInput"/>
                 </Col>
             </FormGroup>
             <FormGroup controlId="formEvent">
@@ -46,7 +63,7 @@ export default class AddOutfitForm extends Component {
                     Event
                 </Col>
                 <Col xs={4}>
-                    <FormControl componentClass="select" placeholder="select">
+                    <FormControl componentClass="select" ref="eventInput">
                         <option value="wedding">Wedding</option>
                         <option value="christening">Christening</option>
                         <option value="communion">Communion</option>
@@ -56,21 +73,7 @@ export default class AddOutfitForm extends Component {
                 </Col>
             </FormGroup>
             <FormGroup>
-                <Col componentClass={ControlLabel} xs={4}>
-                    City
-                </Col>
-                <Col xs={4}>
-                    <FormControl type="text"/>
-                </Col>
-            </FormGroup>
-            <FormGroup>
-                <Col componentClass={ControlLabel} xs={4}>
-                    Date
-                </Col>
-                <Col xs={2}>
-                    <EventDatePicker />
-                </Col>
-                <Col xs={2}>
+                <Col xs={8}>
                     <Button bsStyle="primary" type="submit" className="pull-right">Send</Button>
                 </Col>
             </FormGroup>

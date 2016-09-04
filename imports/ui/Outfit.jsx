@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-import OutfitButtonPanel from './OutfitButtonPanel'
+import OutfitButtonToolbar from './OutfitButtonToolbar'
 
 export default class Outfit extends Component {
 
@@ -16,7 +16,7 @@ export default class Outfit extends Component {
             <tr>
                 <td><img src="images/circle_green.png" height="20" width="20"/></td>                
                 { outfitRow }
-                <OutfitButtonPanel />
+                <OutfitButtonToolbar outfit={ this.props.outfit }/>
             </tr>
         );
     }

@@ -18,8 +18,9 @@ class OutfitsList extends Component {
         return (
             <thead>
               <tr>
-                <th>&nbsp;</th>
+                <th></th>
                 { outfitProperties }
+                <th></th>
               </tr>
             </thead>  
         );

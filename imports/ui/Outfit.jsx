@@ -1,19 +1,22 @@
 import React, { Component, PropTypes } from 'react';
 
+import OutfitButtonPanel from './OutfitButtonPanel'
+
 export default class Outfit extends Component {
 
     render() {
-        let outfitRows = [];
+        let outfitRow = [];
         for (var propertyName in this.props.outfit) {
             if (propertyName !== '_id') {
-                outfitRows.push(<td>{ this.props.outfit[propertyName.toString()] }</td>);
+                outfitRow.push(<td>{ this.props.outfit[propertyName.toString()] }</td>);
             }
         }
         
         return (
             <tr>
                 <td><img src="images/circle_green.png" height="20" width="20"/></td>                
-                { outfitRows }
+                { outfitRow }
+                <OutfitButtonPanel />
             </tr>
         );
     }

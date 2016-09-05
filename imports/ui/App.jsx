@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { Alert } from 'react-bootstrap';
+import { Image, Alert } from 'react-bootstrap';
 import { createContainer } from 'meteor/react-meteor-data';
 
 import { Outfits } from '../api/outfits.js';
@@ -12,6 +12,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="container">
+        <Image src="images/logo.png" responsive />
         <br/>
         <AddOutfitForm />
         <br/>

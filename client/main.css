@@ -1,1 +1,8 @@
-/* CSS declarations go here */
+body {
+    background-color: #F8E0E6;
+}
+
+img {
+    display: block;
+    margin: auto;
+}

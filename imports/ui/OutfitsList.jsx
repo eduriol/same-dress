@@ -8,7 +8,7 @@ import Outfit from './Outfit';
 
 class OutfitsList extends Component {
     
-    renderOutfitsHeader() {
+    renderOutfitsTableHeader() {
         let outfitProperties = [];
         for (var propertyName in this.props.outfits[0]) {
             if (propertyName !== '_id') {
@@ -34,23 +34,21 @@ class OutfitsList extends Component {
         );
     }
     
-    renderOutfitsTable() {
-        const outfitsTable = (
-          <Table responsive>
-            { this.renderOutfitsHeader() }
+    renderOutfitsTableBody() {
+        const outfitsTableBody = (
             <tbody>
               { this.renderOutfitRows() }
             </tbody>
-          </Table>
         );
-        return outfitsTable;
+        return outfitsTableBody;
     }
 
     render() {
         return (
-            <ul>
-                { this.renderOutfitsTable() }
-            </ul>
+            <Table responsive>
+                { this.renderOutfitsTableHeader() }
+                { this.renderOutfitsTableBody() }
+            </Table>
         );
     }
 }

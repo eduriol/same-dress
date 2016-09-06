@@ -8,14 +8,14 @@ import AddOutfitForm from './AddOutfitForm';
 import OutfitsList from './OutfitsList';
 
 export default class App extends Component {
-  
+
   render() {
     return (
       <div className="container">
         <Image src="images/logo.png" responsive />
-        <br/>
+        <br />
         <AddOutfitForm />
-        <br/>
+        <br />
         { (this.props.outfitsCount > 0) ?
           <OutfitsList /> :
           <Alert bsStyle="warning">
@@ -32,9 +32,9 @@ App.propTypes = {
 };
 
 export default createContainer(
-    () => {
-        return {
-            outfitsCount: Outfits.find({}).count(),
-        };
-    }, App
+  () => {
+    return {
+      outfitsCount: Outfits.find({}).count(),
+    };
+  }, App
 );

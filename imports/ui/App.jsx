@@ -6,6 +6,7 @@ import { Outfits } from '../api/outfits.js';
 
 import AddOutfitForm from './AddOutfitForm';
 import OutfitsList from './OutfitsList';
+import AccountsUIWrapper from './AccountsUIWrapper';
 
 export default class App extends Component {
 
@@ -14,6 +15,7 @@ export default class App extends Component {
       <div className="container">
         <Image src="images/logo.png" responsive />
         <br />
+        <AccountsUIWrapper />
         <AddOutfitForm />
         <br />
         { (this.props.outfitsCount > 0) ?

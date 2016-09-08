@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Table } from 'react-bootstrap';
 import { createContainer } from 'meteor/react-meteor-data';
+import { Meteor } from 'meteor/meteor';
 
 import { Outfits } from '../api/outfits.js';
 

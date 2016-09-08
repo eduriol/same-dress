@@ -7,7 +7,7 @@ export default class Outfit extends Component {
   render() {
     const outfitRow = [];
     for (const propertyName in this.props.outfit) {
-      if (propertyName !== '_id') {
+      if (propertyName !== '_id' && propertyName !== 'owner') {
         outfitRow.push(<td>{ this.props.outfit[propertyName.toString()] }</td>);
       }
     }

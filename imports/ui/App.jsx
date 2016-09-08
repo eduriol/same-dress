@@ -16,13 +16,17 @@ export default class App extends Component {
         <Image src="images/logo.png" responsive />
         <br />
         <AccountsUIWrapper />
-        <AddOutfitForm />
-        <br />
-        { (this.props.outfitsCount > 0) ?
-          <OutfitsList /> :
-          <Alert bsStyle="warning">
-            You haven't sent any outfit yet.
-          </Alert>
+        { this.props.currentUser ?
+          <div>
+            <AddOutfitForm />
+            <br />
+            { (this.props.outfitsCount > 0) ?
+              <OutfitsList /> :
+              <Alert bsStyle="warning">
+                You haven't sent any outfit yet.
+              </Alert>
+            }
+          </div> : ''
         }
       </div>
     );
@@ -31,12 +35,14 @@ export default class App extends Component {
 
 App.propTypes = {
   outfitsCount: PropTypes.number.isRequired,
+  currentUser: PropTypes.object,
 };
 
 export default createContainer(
   () => {
     return {
       outfitsCount: Outfits.find({}).count(),
+      currentUser: Meteor.user(),
     };
   }, App
 );

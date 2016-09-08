@@ -12,9 +12,10 @@ export default class AddOutfitForm extends Component {
     const brand = ReactDOM.findDOMNode(this.refs.brandInput).value.trim();
     const color = ReactDOM.findDOMNode(this.refs.colorInput).value.trim();
     const event = ReactDOM.findDOMNode(this.refs.eventInput).value.trim();
+    const owner =  Meteor.userId();
 
     Outfits.insert({
-      type, brand, color, event,
+      type, brand, color, event, owner
     });
 
     ReactDOM.findDOMNode(this.refs.typeInput).value = 'short';

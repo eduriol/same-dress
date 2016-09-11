@@ -2,26 +2,27 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Form, FormGroup, Col, ControlLabel, FormControl, Button } from 'react-bootstrap';
 
-import { Outfits } from '../api/outfits.js';
+import { insertOutfit } from '../api/outfits.js';
 
 export default class AddOutfitForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const type = ReactDOM.findDOMNode(this.refs.typeInput).value.trim();
-    const brand = ReactDOM.findDOMNode(this.refs.brandInput).value.trim();
-    const color = ReactDOM.findDOMNode(this.refs.colorInput).value.trim();
-    const event = ReactDOM.findDOMNode(this.refs.eventInput).value.trim();
-    const owner =  Meteor.userId();
-
-    Outfits.insert({
-      type, brand, color, event, owner
+    const newOutfit = {
+      type: ReactDOM.findDOMNode(this.refs.typeInput).value.trim(),
+      brand: ReactDOM.findDOMNode(this.refs.brandInput).value.trim(),
+      color: ReactDOM.findDOMNode(this.refs.colorInput).value.trim(),
+      event: ReactDOM.findDOMNode(this.refs.eventInput).value.trim(),
+      owner:  Meteor.userId()
+    }
+    insertOutfit.call(newOutfit, (error) => {
+      if (!error) {
+        ReactDOM.findDOMNode(this.refs.typeInput).value = 'short';
+        ReactDOM.findDOMNode(this.refs.brandInput).value = '';
+        ReactDOM.findDOMNode(this.refs.colorInput).value = '';
+        ReactDOM.findDOMNode(this.refs.eventInput).value = 'wedding';
+      }
     });
-
-    ReactDOM.findDOMNode(this.refs.typeInput).value = 'short';
-    ReactDOM.findDOMNode(this.refs.brandInput).value = '';
-    ReactDOM.findDOMNode(this.refs.colorInput).value = '';
-    ReactDOM.findDOMNode(this.refs.eventInput).value = 'wedding';
   }
 
   render() {

@@ -60,6 +60,7 @@ OutfitsList.propTypes = {
 
 export default createContainer(
   () => {
+    Meteor.subscribe('outfits');
     return {
       outfits: Outfits.find({}).fetch(),
     };

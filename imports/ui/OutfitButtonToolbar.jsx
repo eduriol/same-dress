@@ -2,12 +2,12 @@ import React, { Component, PropTypes } from 'react';
 import { ButtonToolbar, Button, Glyphicon } from 'react-bootstrap';
 import { createContainer } from 'meteor/react-meteor-data';
 
-import { Outfits } from '../api/outfits.js';
+import { removeOutfit } from '../api/outfits.js';
 
 export default class OutfitButtonToolbar extends Component {
 
   deleteThisOutfit() {
-    Outfits.remove(this.props.outfit._id);
+    removeOutfit.call({ outfitId: this.props.outfit._id });
   }
 
   render() {
@@ -28,13 +28,5 @@ export default class OutfitButtonToolbar extends Component {
 }
 
 OutfitButtonToolbar.propTypes = {
-  outfits: PropTypes.array.isRequired,
+  outfit: PropTypes.object.isRequired,
 };
-
-export default createContainer(
-  () => {
-    return {
-      outfits: Outfits.find({}).fetch(),
-    };
-  }, OutfitButtonToolbar
-);

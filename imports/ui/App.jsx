@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Image, Alert } from 'react-bootstrap';
 import { createContainer } from 'meteor/react-meteor-data';
+import { Meteor } from 'meteor/meteor';
 
 import { Outfits } from '../api/outfits.js';
 
@@ -40,6 +41,7 @@ App.propTypes = {
 
 export default createContainer(
   () => {
+    Meteor.subscribe('outfits');
     return {
       outfitsCount: Outfits.find({}).count(),
       currentUser: Meteor.user(),

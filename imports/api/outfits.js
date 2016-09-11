@@ -18,7 +18,7 @@ export const insertOutfit = new ValidatedMethod({
 		brand: { type: String },
 		color: { type: String },
 		event: { type: String },
-		owner: { type: String }
+		owner: { type: String },
 	}).validator(),
 	run(outfit) {
 		if (!this.userId) {
@@ -31,7 +31,7 @@ export const insertOutfit = new ValidatedMethod({
 export const removeOutfit = new ValidatedMethod({
 	name: 'Outfits.methods.remove',
 	validate: new SimpleSchema({
-		outfitId: { type: String }
+		outfitId: { type: String },
 	}).validator(),
 	run({ outfitId }) {
 		if (!this.userId) {

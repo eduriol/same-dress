@@ -18,7 +18,7 @@ export default class Outfit extends Component {
           <img src="images/circle_green.png" role="presentation" height="20" width="20" />
         </td>
         { outfitRow }
-        <OutfitButtonToolbar outfit={this.props.outfit} />
+        <OutfitButtonToolbar {...outfit} />
       </tr>
     );
   }

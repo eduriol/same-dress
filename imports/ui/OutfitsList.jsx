@@ -12,7 +12,7 @@ class OutfitsList extends Component {
   renderOutfitsTableHeader() {
     const outfitProperties = [];
     for (const propertyName in this.props.outfits[0]) {
-      if (propertyName !== '_id') {
+      if (propertyName !== '_id' && propertyName !== 'owner') {
         outfitProperties.push(<th>{ propertyName }</th>);
       }
     }

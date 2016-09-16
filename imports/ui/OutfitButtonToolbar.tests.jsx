@@ -1,11 +1,12 @@
 import React from 'react';
 import { Random } from 'meteor/random';
-import { expect } from 'chai';
+import { expect, assert } from 'chai';
 import { shallow } from 'enzyme';
 import { Button, ButtonToolbar, Glyphicon } from 'react-bootstrap';
 
 import OutfitButtonToolbar from './OutfitButtonToolbar';
-import { Outfits, removeOutfit } from '../api/outfits.js';
+
+import { Outfits } from '../api/outfits.js';
 
 describe("OutfitButtonToolbar", function() {
 	const userId = Random.id();
@@ -33,10 +34,16 @@ describe("OutfitButtonToolbar", function() {
   	expect(wrapper).to.have.length(2);
 	});
 
-	it("Both buttons contain Glyphicons", function() {
+	it("both buttons contain Glyphicons", function() {
   	const wrapper = shallow(<OutfitButtonToolbar outfit={outfit} />).find('td').find(ButtonToolbar).children().find(Button);
   	expect(wrapper.at(0).contains(<Glyphicon glyph="pencil" />)).to.equal(true);
   	expect(wrapper.at(1).contains(<Glyphicon glyph="remove" />)).to.equal(true);
 	});
 
+  it("calls delete method when proper button clicked", function() {
+    const wrapper = shallow(<OutfitButtonToolbar outfit={outfit} />).find('td').find(ButtonToolbar).children().find(Button).at(1);
+    expect(function(){
+      wrapper.simulate('click');
+    }).to.throw('not-authorized');
+  });
 });

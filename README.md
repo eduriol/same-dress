@@ -15,6 +15,10 @@ To run the server-side [Mocha](https://mochajs.org/) and client-side [Enzyme](ht
 ```
 meteor test --driver-package practicalmeteor:mocha
 ```
+And to run the ESLint analyzer:
+```
+node_modules/.bin/eslint . --ext .jsx,.js
+```
 
 ## Usage
 * Login using your Facebook account.

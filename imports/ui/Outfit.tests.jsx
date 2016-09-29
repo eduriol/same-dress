@@ -47,6 +47,5 @@ if (Meteor.isClient) {
       const wrapper = shallow(<Outfit outfit={outfit} />).find('tr').find(OutfitButtonToolbar);
       expect(wrapper).to.have.length(1);  
     });
-
   });
 }

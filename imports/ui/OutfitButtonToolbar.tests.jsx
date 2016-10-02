@@ -10,6 +10,7 @@ import { Outfits } from '../api/outfits.js';
 
 if (Meteor.isClient) {
   describe("OutfitButtonToolbar", function() {
+    //Outfits.remove({});
   	const userId = Random.id();
     const outfitId = Outfits.insert({
   			type: 'short',

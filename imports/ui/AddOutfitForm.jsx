@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Form, FormGroup, Col, ControlLabel, FormControl, Button } from 'react-bootstrap';
+import { Meteor } from 'meteor/meteor';
 
 import { insertOutfit } from '../api/outfits.js';
 
@@ -13,8 +14,8 @@ export default class AddOutfitForm extends Component {
       brand: ReactDOM.findDOMNode(this.refs.brandInput).value.trim(),
       color: ReactDOM.findDOMNode(this.refs.colorInput).value.trim(),
       event: ReactDOM.findDOMNode(this.refs.eventInput).value.trim(),
-      owner:  Meteor.userId()
-    }
+      owner: Meteor.userId(),
+    };
     insertOutfit.call(newOutfit, (error) => {
       if (!error) {
         ReactDOM.findDOMNode(this.refs.typeInput).value = 'short';

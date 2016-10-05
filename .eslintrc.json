@@ -4,6 +4,17 @@
     	"browser": true
   	},
     "settings": {
-    	"import/core-modules": [ "meteor/meteor" ]
+    	"import/core-modules": [
+    		"meteor/meteor",
+    		"meteor/react-meteor-data",
+    		"meteor/random",
+    		"meteor/templating",
+    		"meteor/blaze",
+    		"meteor/accounts-base",
+    		"meteor/practicalmeteor:chai",
+    		"meteor/mongo",
+    		"meteor/mdg:validated-method",
+    		"meteor/aldeed:simple-schema"
+    	]
   	}
 }

@@ -8,6 +8,7 @@ import AddOutfitForm from './AddOutfitForm';
 
 if (Meteor.isClient) {
   describe("AddOutfitForm", function() {
+    
     it("contains a form", function() {
       const wrapper = shallow(<AddOutfitForm />).find(Form);
       expect(wrapper).to.have.length(1);

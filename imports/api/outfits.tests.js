@@ -9,7 +9,7 @@ import { Outfits, removeOutfit, insertOutfit } from './outfits.js';
 
 if (Meteor.isServer) {
   describe('Outfits', () => {
-  	describe('methods', () => {
+    describe('methods', () => {
 			const userId = Random.id();
 			const otherUserId = 'otherUserId';
       let outfitId;

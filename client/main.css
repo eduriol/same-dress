@@ -8,8 +8,7 @@ img {
 }
 
 .modal-dialog {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%) !important;
+  transform: translate(0, 80%) !important;
+  -ms-transform: translate(0, 80%) !important; /* IE 9 */
+  -webkit-transform: translate(0, 80%) !important; /* Safari and Chrome */
 }

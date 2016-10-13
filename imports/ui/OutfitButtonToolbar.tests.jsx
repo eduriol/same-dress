@@ -42,14 +42,15 @@ if (Meteor.isClient) {
       expect(wrapper.at(0).contains(<Glyphicon glyph="pencil" />)).to.equal(true);
       expect(wrapper.at(1).contains(<Glyphicon glyph="remove" />)).to.equal(true);
     });
-    it('calls delete method when proper button clicked', () => {
-      const wrapper = shallow(<OutfitButtonToolbar outfit={outfit} />)
-      .find('td').find(ButtonToolbar).children()
-      .find(Button)
-      .at(1);
-      expect(() => {
-        wrapper.simulate('click');
-      }).to.throw('not-authorized');
+    it('does not show modal confirmation window before clicking button', () => {
+      const wrapper = shallow(<OutfitButtonToolbar outfit={outfit} />);
+      expect(wrapper.state().showModal).to.equal(false);
+    });
+    it('shows modal confirmation window when delete button clicked', () => {
+      const wrapper = shallow(<OutfitButtonToolbar outfit={outfit} />);
+      const button = wrapper.find('td').find(ButtonToolbar).children().find(Button).at(1);
+      button.simulate('click');
+      expect(wrapper.state().showModal).to.equal(true);
     });
   });
 }

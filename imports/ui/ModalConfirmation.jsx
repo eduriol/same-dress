@@ -4,7 +4,7 @@ import { Modal, Button } from 'react-bootstrap';
 export default class ModalConfirmation extends Component {
   render() {
     return (
-      <Modal show={this.props.showModal} onHide={this.props.onClose}>
+      <Modal dialogClassName="modal-dialog" show={this.props.showModal} onHide={this.props.onClose}>
         <Modal.Header closeButton>
           <Modal.Title>{this.props.title}</Modal.Title>
         </Modal.Header>

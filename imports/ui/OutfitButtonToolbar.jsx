@@ -35,9 +35,9 @@ export default class OutfitButtonToolbar extends Component {
         title="Confirm deletion"
         body="Do you really want to delete this outfit? This action cannot be undone."
         cancelLabel="Cancel"
-        bsStyle="primary"
+        bsStyle="danger"
         onConfirm={this.deleteThisOutfit.bind(this)}
-        confirmLabel="Confirm"
+        confirmLabel="Delete"
       />
     );
   }

@@ -48,7 +48,8 @@ if (Meteor.isClient) {
     });
     it('shows modal confirmation window when delete button clicked', () => {
       const wrapper = shallow(<OutfitButtonToolbar outfit={outfit} />);
-      const button = wrapper.find('td').find(ButtonToolbar).children().find(Button).at(1);
+      const button = wrapper.find('td').find(ButtonToolbar).children().find(Button)
+      .at(1);
       button.simulate('click');
       expect(wrapper.state().showModal).to.equal(true);
     });

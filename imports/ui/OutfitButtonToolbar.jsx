@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import { ButtonToolbar, Button, Glyphicon } from 'react-bootstrap';
-import { createContainer } from 'meteor/react-meteor-data';
 
 import ModalConfirmation from './ModalConfirmation';
 
@@ -19,11 +18,11 @@ export default class OutfitButtonToolbar extends Component {
     removeOutfit.call({ outfitId: this.props.outfit._id });
   }
 
-  closeModal(){
+  closeModal() {
     this.setState({ showModal: false });
   }
 
-  openModal(){
+  openModal() {
     this.setState({ showModal: true });
   }
 
@@ -49,7 +48,7 @@ export default class OutfitButtonToolbar extends Component {
           <Button bsStyle="link">
             <Glyphicon glyph="pencil" />
           </Button>
-          <Button bsStyle="link" onClick={ this.openModal.bind(this) }>
+          <Button bsStyle="link" onClick={this.openModal.bind(this)}>
             { this.renderDeletionModal() }
             <Glyphicon glyph="remove" />
           </Button>

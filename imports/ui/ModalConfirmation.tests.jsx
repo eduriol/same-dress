@@ -9,7 +9,8 @@ import ModalConfirmation from './ModalConfirmation';
 if (Meteor.isClient) {
   describe('ModalConfirmation', () => {
     it('contains a title', () => {
-      const wrapper = shallow(<ModalConfirmation title="ModalConfirmation title" />).find(Modal.Title);
+      const wrapper = shallow(<ModalConfirmation title="ModalConfirmation title" />)
+      .find(Modal.Title);
       expect(wrapper).to.have.length(1);
       expect(wrapper.childAt(0).text()).to.equal('ModalConfirmation title');
     });

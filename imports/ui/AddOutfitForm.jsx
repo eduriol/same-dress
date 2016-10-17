@@ -2,17 +2,25 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Form, FormGroup, Col, ControlLabel, FormControl, Button } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
+import { CirclePicker } from 'react-color';
 
 import { insertOutfit } from '../api/outfits.js';
 
 export default class AddOutfitForm extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      color: '',
+    };
+  }
 
   handleSubmit(e) {
     e.preventDefault();
     const newOutfit = {
       type: ReactDOM.findDOMNode(this.refs.typeInput).value.trim(),
       brand: ReactDOM.findDOMNode(this.refs.brandInput).value.trim(),
-      color: ReactDOM.findDOMNode(this.refs.colorInput).value.trim(),
+      color: this.state.color,
       event: ReactDOM.findDOMNode(this.refs.eventInput).value.trim(),
       owner: Meteor.userId(),
     };
@@ -20,10 +28,14 @@ export default class AddOutfitForm extends Component {
       if (!error) {
         ReactDOM.findDOMNode(this.refs.typeInput).value = 'short';
         ReactDOM.findDOMNode(this.refs.brandInput).value = '';
-        ReactDOM.findDOMNode(this.refs.colorInput).value = '';
+        this.setState({ color: '' });
         ReactDOM.findDOMNode(this.refs.eventInput).value = 'wedding';
       }
     });
+  }
+
+  handleChangeComplete(color) {
+    this.setState({ color: color.hex });
   }
 
   render() {
@@ -55,7 +67,7 @@ export default class AddOutfitForm extends Component {
             Color
           </Col>
           <Col xs={4}>
-            <FormControl type="text" ref="colorInput" />
+            <CirclePicker color={this.state.color} onChangeComplete={this.handleChangeComplete.bind(this)}/>
           </Col>
         </FormGroup>
         <FormGroup controlId="formEvent">

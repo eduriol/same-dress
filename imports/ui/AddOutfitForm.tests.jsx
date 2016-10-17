@@ -4,6 +4,7 @@ import { shallow, mount } from 'enzyme';
 import { stub } from 'sinon';
 import { Form, Button } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
+import { CirclePicker } from 'react-color';
 
 import AddOutfitForm from './AddOutfitForm';
 
@@ -21,9 +22,9 @@ if (Meteor.isClient) {
       const wrapper = mount(<AddOutfitForm />);
       expect(wrapper.ref('brandInput').prop('type')).to.equal('text');
     });
-    it('contains a text input for outfit color', () => {
-      const wrapper = mount(<AddOutfitForm />);
-      expect(wrapper.ref('colorInput').prop('type')).to.equal('text');
+    it('contains a picker for outfit color', () => {
+      const wrapper = mount(<AddOutfitForm />).find(CirclePicker);
+      expect(wrapper).to.have.length(1);
     });
     it('contains a select for event', () => {
       const wrapper = mount(<AddOutfitForm />);

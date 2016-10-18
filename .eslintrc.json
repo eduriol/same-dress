@@ -1,8 +1,13 @@
 {
     "extends": "airbnb",
     "env": {
-    	"browser": true
+    	"browser": true,
+        "mocha": true,
+        "meteor": true
   	},
+    "rules": {
+        "react/jsx-no-bind": "off"
+    },
     "settings": {
     	"import/core-modules": [
     		"meteor/meteor",
@@ -14,7 +19,9 @@
     		"meteor/practicalmeteor:chai",
     		"meteor/mongo",
     		"meteor/mdg:validated-method",
-    		"meteor/aldeed:simple-schema"
+    		"meteor/aldeed:simple-schema",
+            "chai",
+            "enzyme"
     	]
   	}
 }

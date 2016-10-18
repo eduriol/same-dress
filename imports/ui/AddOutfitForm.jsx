@@ -67,7 +67,10 @@ export default class AddOutfitForm extends Component {
             Color
           </Col>
           <Col xs={4}>
-            <CirclePicker color={this.state.color} onChangeComplete={this.handleChangeComplete.bind(this)}/>
+            <CirclePicker
+              color={this.state.color}
+              onChangeComplete={this.handleChangeComplete.bind(this)}
+            />
           </Col>
         </FormGroup>
         <FormGroup controlId="formEvent">

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Random } from 'meteor/random';
-import { expect, assert } from 'chai';
+import { expect } from 'chai';
 import { shallow } from 'enzyme';
 import { Button, ButtonToolbar, Glyphicon } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';

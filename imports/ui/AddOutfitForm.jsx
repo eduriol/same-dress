@@ -6,6 +6,8 @@ import { CirclePicker } from 'react-color';
 
 import { insertOutfit } from '../api/outfits.js';
 
+import EventsList from './EventsList'
+
 export default class AddOutfitForm extends Component {
 
   constructor(props) {
@@ -85,6 +87,7 @@ export default class AddOutfitForm extends Component {
               <option value="graduation">Graduation</option>
               <option value="other">Other</option>
             </FormControl>
+            <EventsList />
           </Col>
         </FormGroup>
         <FormGroup>

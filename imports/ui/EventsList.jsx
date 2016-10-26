@@ -1,28 +1,43 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+import { createContainer } from 'meteor/react-meteor-data';
 
-export default class EventsList extends Component {
+class EventsList extends Component {
 
-  renderFacebookUser() {
-    /* make the API call */
+  getEvents() {
+    var self = this;
     FB.api(
-        "/10154740868438578?fields=email",
-        {
-          access_token : 'EAAZAKXj1Tfa8BAJAGnhn73hj36dZBZC6bG9gX42uUdikeg0snCY0z8EH0mFdasbI6VAFSItZBv0dBIQwkuKMhhQeX280EOBhKb4NP9rFmJyCjXcKg7ZAEC9oAABKsrZCkEpOvsMIchcghujZB4SYEjZAJFkrX0ecxksZD'
-        },
-        function (response) {
-          if (response && !response.error) {
-            alert(JSON.stringify(response));
-          }
+      "/me/events",
+      {
+        access_token: 'EAAZAKXj1Tfa8BAGjSAmv3B2rBkRDgWCzmM8JHfCFigiJdZAtSgBt7bii7ZA5POn0jq0tGiTh8AsSkkRaYYjZBd5pfHm0cK2vmShtfTUFPgwtaZB5y39xouM3laVp7aHlvFFaGVStO1M0ymXDpCtJ5yeEZBOreZAHvvgKVHs6ZBkxpgZDZD',
+      },
+      function (response) {
+        if (response && !response.error) {
+          return response.data;
         }
+      }
     );
   }
 
   render() {
+    let prueba = this.getEvents();
+    alert(prueba);
     return (
       <div>
-        {this.renderFacebookUser()}
+        { this.props.events }
       </div>
     );
   }
 
 }
+
+EventsList.propTypes = {
+  events: PropTypes.string.isRequired,
+};
+
+export default createContainer(
+  () => {
+    return {
+      events: 'hola',
+    };
+  }, EventsList
+);

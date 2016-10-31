@@ -6,7 +6,7 @@ import { CirclePicker } from 'react-color';
 
 import { insertOutfit } from '../api/outfits.js';
 
-import EventsList from './EventsList'
+import EventSelector from './EventSelector'
 
 export default class AddOutfitForm extends Component {
 
@@ -80,14 +80,7 @@ export default class AddOutfitForm extends Component {
             Event
           </Col>
           <Col xs={4}>
-            <FormControl componentClass="select" ref="eventInput">
-              <option value="wedding">Wedding</option>
-              <option value="christening">Christening</option>
-              <option value="communion">Communion</option>
-              <option value="graduation">Graduation</option>
-              <option value="other">Other</option>
-            </FormControl>
-            <EventsList />
+            <EventSelector />
           </Col>
         </FormGroup>
         <FormGroup>

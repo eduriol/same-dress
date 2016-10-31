@@ -12,24 +12,33 @@ export default class EventsList extends Component {
 
   componentDidMount() {
     var self = this;
+    alert('1: ' + JSON.stringify(self.state.events));
     FB.api(
-      "/me",
+      "/me/events",
       {
-        fields: 'email',
-        access_token: 'EAAZAKXj1Tfa8BAOIvLXL9P6ehPYrONi4OJvUj5xAezWTp7xswi2ZBTP0E7QRSZBGJHl20kYxKWHAVEdBghWZAaMxAzgM3nu8QwZCZABZBwscEiLC4Lah6UZAIt2aO17heSYFYcSYXO9OkVh9dqIUxXKOey3dPxOdCm4ZD',
+        access_token: 'EAACEdEose0cBAANrB3jwjCbHSy7SY7tGeMDEk8poJr01LOGrDfmtGrpFg3ZBIh8WhZBZAxhsD4ygYy4ak5R8pd2ZAUMXFF2tfZAHcwZBClvHAefKrEjTLOtOd2GzlQHfseTlsce5qnTDaBVc7PiuYiVJSKvUOelZA5z4rgzkCmqmwZDZD',
       },
       function (response) {
         if (response && !response.error) {
-          self.setState({ events: response.email });
+          self.setState({ events: response });
         }
       }
+    );
+    alert('2: ' + JSON.stringify(self.state.events));
+  }
+
+  renderSelectOptions() {
+    return this.state.events.map(
+      (event) => (
+        <option value={ event['id'] }>{ event['name'] }</option>
+      )
     );
   }
 
   render() {
     return (
       <FormControl componentClass="select" ref="eventInput">
-        <option value={ this.state.events }>{ this.state.events }</option>      
+        { this.renderSelectOptions() }
       </FormControl>
     );
   }
